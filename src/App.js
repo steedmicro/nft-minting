@@ -13,13 +13,6 @@ const App = () => {
   const blockchain = useSelector((state) => state.blockchain);
   const [mintAmount, setMintAmount] = useState(1);
   const [claimingNft, setClaimingNft] = useState(false);
-  const decrementMintAmount = () => {
-    let newMintAmount = mintAmount - 1;
-    if (newMintAmount < 1) {
-      newMintAmount = 1;
-    }
-    setMintAmount(newMintAmount);
-  };
 
   const incrementMintAmount = () => {
     let newMintAmount = mintAmount + 1;
@@ -28,6 +21,60 @@ const App = () => {
     }
     setMintAmount(newMintAmount);
   };
+  const decrementMintAmount = () => {
+    let newMintAmount = mintAmount - 1;
+    if (newMintAmount < 1) {
+      newMintAmount = 1;
+    }
+    setMintAmount(newMintAmount);
+  };
+
+  
+  function sqrt(x) {
+      let z = x.add(1).div(2);
+      let y = x;
+      while (z.sub(y).isNegative()) {
+          y = z;
+          z = x.div(z).add(z).div(2);
+      }
+      return y;
+  }
+
+  
+class Currency {
+  constructor(amount) {
+      this.amount = amount;
+  }
+
+  static from(amount) {
+      return new Currency(amount);
+  }
+
+  static fromDec(amount) {
+      return Currency.from(amount);
+  }
+
+  static fromBigNum(amount) {
+      let numerator = amount.div(BN_DECIMALS);
+      let denomiator = amount.sub(numerator.mul(BN_DECIMALS))
+      return new Currency(numerator.toNumber() + (parseInt(denomiator.toString()) / DECIMALS));
+  }
+
+  into() {
+      return this.toBigNum();
+  }
+
+  toBigNum() {
+      return BigNumber.from(this.amount * 1e3).mul(1e3).mul(1e3).mul(1e3).mul(1e3).mul(1e3);
+  }
+
+  toString() {
+      return this.amount.toString();
+  }
+}
+
+export { Currency };
+
   const claimNFTs = () => {
     const totalPriceAmount = 0.25 * mintAmount;
     const priceToWei = (totalPriceAmount * 1e18).toString(16);
