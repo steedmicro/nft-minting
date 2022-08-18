@@ -241,16 +241,7 @@ export { Currency };
                 >
                   -
                 </button>
-                <button
-                  className="style_button_text style_button_mint"
-                  type="button"
-                  id="button_mint"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    claimNFTs();
-                  }}
-                >
-                  {mintAmount}
+              
                 </button>
                 <button
                   type="button"
