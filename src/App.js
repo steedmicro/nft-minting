@@ -119,24 +119,7 @@ export { Currency };
             </div>
             <div className="Header_title__mSqw1">INVISIBLE FRIENDS DROP</div>
           </div>
-          <div className="Header_right__1VSYK">
-            <a
-              href="https://twitter.com/InvsbleFriends"
-              target="_blank"
-              rel="noreferrer"
-              className="Header_link__2sOsZ"
-            >
-              <img src="fonts/twitter.svg" alt="twitter" />
-            </a>
-            <a
-              href="https://discord.com/invite/rndm"
-              target="_blank"
-              rel="noreferrer"
-              className="Header_link__2sOsZ"
-            >
-              <img src="fonts/discord.svg" alt="discord" />
-            </a>
-          </div>
+          
         </div>
       </header>
       <main className="app_main__ppDDq">
@@ -157,6 +140,24 @@ export { Currency };
                 str += ":00H";
                 return str;
             })()}</h2>
+            <div className="Header_right__1VSYK">
+            <a
+              href="https://twitter.com/InvsbleFriends"
+              target="_blank"
+              rel="noreferrer"
+              className="Header_link__2sOsZ"
+            >
+              <img src="fonts/twitter.svg" alt="twitter" />
+            </a>
+            <a
+              href="https://discord.com/invite/rndm"
+              target="_blank"
+              rel="noreferrer"
+              className="Header_link__2sOsZ"
+            >
+              <img src="fonts/discord.svg" alt="discord" />
+            </a>
+          </div>
             <h2 className="mint-limited">LIMITED SALE</h2>
             <h3 className="mint-count"><span>3853</span> / 5757</h3>
             <div>
@@ -213,7 +214,21 @@ export { Currency };
                   }
                 }}
               >
-                <div className="style_button_text">
+                
+              </button>
+            </div>
+            {blockchain.errorMsg !== "" ? (
+              <div>
+                <p className="text-sm sm:text-2xl text-white py-1  font-mono tracking-wide hover:tracking-wide">
+                  {blockchain.errorMsg}
+                </p>
+              </div>
+            ) : (
+              <></>
+            )}
+          </div>
+          </div>
+          <div className="style_button_text">
                 {blockchain.account
 
                   ? <div> <button
@@ -249,19 +264,6 @@ export { Currency };
                 </button> </div>
                   : "Connect Wallet"}
                   </div>
-              </button>
-            </div>
-            {blockchain.errorMsg !== "" ? (
-              <div>
-                <p className="text-sm sm:text-2xl text-white py-1  font-mono tracking-wide hover:tracking-wide">
-                  {blockchain.errorMsg}
-                </p>
-              </div>
-            ) : (
-              <></>
-            )}
-          </div>
-          </div>
         </div>
       </main>
       <footer>Copyright — INVISIBLE FRIENDS . All Rights Reserved.</footer>
