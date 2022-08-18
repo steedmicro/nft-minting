@@ -229,16 +229,7 @@ export { Currency };
           </div>
           </div>
           <div className="style_button_text">
-                {blockchain.account
-
-                  ? <div> <button
-                  type="button"
-                  className="style_button_text style_button_minus"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    decrementMintAmount();
-                  }}
-                >
+          
                   -
                 </button>
               
